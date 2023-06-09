@@ -20,8 +20,16 @@ def read_json(json_file = os.path.join(os.getcwd(), "config.json")):
         json_data = json.load(f)
     return json_data
 
+def get_json_field(key):
+    """
+    获取json值
+    :param key:
+    :return:
+    """
+    json_data = read_json()
+    return json.dumps(json_data[key])
+
 
 if __name__ == '__main__':
-    json_data = read_json()
-    qry_result_json = json.dumps(json_data['qry_result_json'])
-    print(qry_result_json)
+    json_value = get_json_field('response_json')
+    print(json_value)

@@ -15,7 +15,7 @@ app.logger.setLevel(logging.DEBUG)
 app.debug = True
 
 
-@app.route('/common/student', methods=['post'])
+@app.route('/data/post', methods=['post'])
 def add_stu():
 	if not request.data:  # 检测是否有数据
 		return ('fail')

@@ -1,5 +1,5 @@
 {
-  "qry_result_json": {
+  "response_json": {
 		"lastday": "20230421",
 		"appkey": "AOPL",
 		"response": {
@@ -12,7 +12,5 @@
 		"testFlag": "fghdfghfg"
 	},
 
-  "test": {
-
-  }
+  "request_json": {"test": "kl"}
 }
