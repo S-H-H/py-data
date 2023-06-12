@@ -11,8 +11,21 @@ import logging
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-app.logger.setLevel(logging.DEBUG)
-app.debug = True
+
+# 配置日志记录器及日志级别
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# 配置日志处理器
+handler = logging.FileHandler('app.log', encoding='utf-8')
+handler.setLevel(logging.DEBUG)
+
+# 配置日志格式化器
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+#添加日志处理器到日志记录器
+logger.addHandler(handler)
 
 
 @app.route('/data/post', methods=['post'])
@@ -22,7 +35,7 @@ def add_stu():
 	request_data = request.data.decode('utf-8')
 	# 获取到POST过来的数据，数据需要转换一下编码。根据晶具体情况而定
 	request_json = json.loads(request_data)
-	app.logger.info("接收请求参数：" + json.dumps(request_json))
+	logger.info("接收请求参数：" + json.dumps(request_json))
 	result_json = {
 		"lastday": "20230421",
 		"appkey": "AOPL",
